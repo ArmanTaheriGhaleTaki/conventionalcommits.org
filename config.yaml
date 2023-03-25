@@ -381,3 +381,21 @@ languages:
       current: v1.0.0
       list:
         - v1.0.0
+  fa:
+    weight: 21
+    languageName: "Persian- فارسی"
+    title: کامیت های قراردادی
+    description: مشخصه ای برای اضافه کردن معنایی قابل خواندن به پیام های کامیت برای ماشین و انسان 
+    actions:
+    - label: خلاصه سریع 
+      url: '#خلاصه'
+    - label: مشخصات کامل
+      url: '#مشخصات'
+    - label: مشارکت
+      url: 'https://github.com/conventional-commits/conventionalcommits.org'
+    versions:
+      current: v1.0.0
+      list:
+        - v1.0.0
+        
+  
