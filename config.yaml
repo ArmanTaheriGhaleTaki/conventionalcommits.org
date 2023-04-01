@@ -391,7 +391,7 @@ languages:
       url: '#خلاصه'
     - label: مشخصات کامل
       url: '#مشخصات'
-    - label: مشارکت
+    - label: Github
       url: 'https://github.com/conventional-commits/conventionalcommits.org'
     versions:
       current: v1.0.0
