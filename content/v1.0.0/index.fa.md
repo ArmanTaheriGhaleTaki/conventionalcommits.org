@@ -204,58 +204,87 @@ _BREAKING CHANGE: environment variables now take precedence over config files_.
 
 ## پرسشگان
 
-### How should I deal with commit messages in the initial development phase?
+### چگونه باید با پیام کامیت ها در ابتدای فاز توسعه کنار بیایم؟
 
-We recommend that you proceed as if you've already released the product. Typically *somebody*, even if it's your fellow software developers, is using your software. They'll want to know what's fixed, what breaks etc.
+ما توصیه میکنیم اگر قبلا محصول را عرضه کرده اید ادامه دهید . به طور نمونه هر کسی حتی اگر او همکار شما در توسعه نرم افزار باشد که از نرم افزار استفاده میکند خواهد دانست که چه چیزی اصلاح شده و چه چیزی خراب شده است و غیره .
 
-### Are the types in the commit title uppercase or lowercase?
 
-Any casing may be used, but it's best to be consistent.
 
-### What do I do if the commit conforms to more than one of the commit types?
 
-Go back and make multiple commits whenever possible. Part of the benefit of Conventional Commits is its ability to drive us to make more organized commits and PRs.
+### آیا نوع تایتل کامیت باید بزرگ باشد یا کوچک ؟
+هر مدلی ممکن است استفاده شود ولی بهتر است که متسمر باشد.
 
-### Doesn’t this discourage rapid development and fast iteration?
 
-It discourages moving fast in a disorganized way. It helps you be able to move fast long term across multiple projects with varied contributors.
+### اگر کامیت شامل بیش از یک نوع کامیت میشد چه کار کنم ؟
+تا جای ممکن به عقب برگردید و چند کامیت انجام دهید. بخشی از مزایای کامیت قراردادی امکان هدایت ما به کامیت ها و پول رکوئست های ساختارمند تر است.
 
-### Might Conventional Commits lead developers to limit the type of commits they make because they'll be thinking in the types provided?
 
-Conventional Commits encourages us to make more of certain types of commits such as fixes. Other than that, the flexibility of Conventional Commits allows your team to come up with their own types and change those types over time.
 
-### How does this relate to SemVer?
+### ایا این کار باعث دلسرد شدن از توسعه سریع نمیشود؟
+این کار باعث دلسرد شدن از پیشرفت بدون ساختار میشود.
+و کمک میکند به شما تا بتوانید به صورت بلند مدت در میان چند پروژه با مشارکت کنندگان زیاد سریع پیشرفت کنید. 
 
-`fix` type commits should be translated to `PATCH` releases. `feat` type commits should be translated to `MINOR` releases. Commits with `BREAKING CHANGE` in the commits, regardless of type, should be translated to `MAJOR` releases.
 
-### How should I version my extensions to the Conventional Commits Specification, e.g. `@jameswomack/conventional-commit-spec`?
+### ایا ممکن است کامیت های قرار دادی توسعه دهندگان را به سمت محدودیت نوع کامیت هدایت کند زیرا آنها دغدغه این را دارند که چه نوعی تغییر ایجاد میکنند؟ 
+کامیت های قراردادی مارا بیشتر به نوع کامیت های مشخص تشویق میکند مثل اصلاح . غیر از آن انعطاف پذیری کامیت های قراردادی به تیم ما اجازه میدهد تا با نوع کامیت های خود کار کنند و انها را در طول زمان تغییر دهند.
 
-We recommend using SemVer to release your own extensions to this specification (and
-encourage you to make these extensions!)
 
-### What do I do if I accidentally use the wrong commit type?
+###  کامیت های قرار دادی با نسخه‌بندی معنایی چگونه ارتباط دارند؟ 
 
-#### When you used a type that's of the spec but not the correct type, e.g. `fix` instead of `feat`
 
-Prior to merging or releasing the mistake, we recommend using `git rebase -i` to edit the commit history. After release, the cleanup will be different according to what tools and processes you use.
+`fix`
+ نوعی است که به 
+ `PATCH`
+  ترجمه میشود 
+  . `feat`
+   نوعی است که بهتر از به 
+   `MINOR` ترجمه شود .
+    کامیت هایی با 
+     `تغییرات عمده`
+     بدون توجه به نوع تغییر به  
+      `MAJOR` 
+      معادل میشوند.
 
-#### When you used a type *not* of the spec, e.g. `feet` instead of `feat`
+### چگونه باید ورژن نسخه مشخصه های کامیت های قرار دادی مثل  `@jameswomack/conventional-commit-spec` را انجام دهم
+ما توصیه میکنیم از نسخه‌بندی معنایی برای ریلیز نسخه های خود استفاده کنید.
 
-In a worst case scenario, it's not the end of the world if a commit lands that does not meet the Conventional Commits specification. It simply means that commit will be missed by tools that are based on the spec.
 
-### Do all my contributors need to use the Conventional Commits specification?
 
-No! If you use a squash based workflow on Git lead maintainers can clean up the commit messages as they're merged—adding no workload to casual committers.
-A common workflow for this is to have your git system automatically squash commits from a pull request and present a form for the lead maintainer to enter the proper git commit message for the merge.
+### باید چه کار کنم اگر از نوع اشتباهی از کامیت استفاده کردم؟
 
-### How does Conventional Commits handle revert commits?
 
-Reverting code can be complicated: are you reverting multiple commits? if you revert a feature, should the next release instead be a patch?
+#### همگامی که شما از نوعی که مشخص است ولی صحیح نیست مثل 
+`fix`
+ به جای
+  `feat`
 
-Conventional Commits does not make an explicit effort to define revert behavior. Instead we leave it to tooling
-authors to use the flexibility of _types_ and _footers_ to develop their logic for handling reverts.
+قبل از مرج یا ریلیز کردن اشتباه  ُ توصیه میکنیم که از 
+`git rebase -i`
+برای ادیت تاریخچه کامیت ها استفاده کنید. بعد از ریلیز پاکسازی با توجه به رویکرد شما که چه فرایند یا ابزاری استفاده میکنید متفاوت خواهد بود.
 
-One recommendation is to use the `revert` type, and a footer that references the commit SHAs that are being reverted:
+#### زمانی که شما غلط املایی دارید مثل `feet` 
+به جای 
+`feat`
+
+در بدترین حالت ُ اخر دنیا نمیشود اگر که یک کامیت طبق مشخصه کامیت های قرار دادی نباشد بلکه تنها معنی آن از زیر دست ابزاری که بر اساس مشخصه کامیت های قرار دادی است در میرود 
+
+
+### ایا همه مشارکت کنندگان من باید از مشخصه کامیت های قراردادی استفاده کنند؟
+نه اگر ورک فلو گیت شما بر اساس
+ squash
+ باشد نگه دارندگان مخزن های گیت میتوانند انها را اصلاح کنند.
+ یک ورک فلو معمولی برای این کار هنگامی است که به صورت خودکار کامیت های پول رکوئست 
+  squash
+میشوند و نگه دارندگان مخزن گیت میتوانند با پیام مناسب آن را با مخزن اصلی ادغام کنند 
+
+
+### کامیت های قرار دادی چگونه برگشت کامیت ها را مدیریت میکنند
+
+برگشت کد ممکن است پیچیده باشد: ایا چند کامیت را بر میگردانید؟ اگر یک قابلیت را بر میگردانید ریلیز بعدی باید یک اصلاح باشد؟
+کامیت های قرار دادی به صورت صریح تلاش نمیکنند که یک رفتار بازگشتی را تبعیین ککند بلکه ان را به ابزار های نویسنده واگزار میکنیم تا با انعطاف _نوع_ و _پاورقی_ منطق بازگشت را مدیریت کنند.
+
+یک توصیه آن است که از نوع `بازگشت` استفاده کنید و پاورقی آن هش کامیت رفرنس باشد: 
+
 
 ```
 revert: let us never again speak of the noodle incident
